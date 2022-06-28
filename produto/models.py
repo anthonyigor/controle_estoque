@@ -12,4 +12,4 @@ class Produto(models.Model):
         ordering = ('produto',)
 
     def __str__(self):
-        return produto
+        return self.produto
