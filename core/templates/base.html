@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +12,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
 
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
     <title>Estoque</title>
+
+    <style>
+      body {
+        margin-top: 60px;
+      }
+    </style>
 
     {% block css %} {% endblock css %}
   </head>

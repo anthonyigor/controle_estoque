@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
     'produto',
     'estoque',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
