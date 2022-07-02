@@ -9,6 +9,7 @@ MOVIMENTO = (
     ('s', 'saída'),
 )
 
+
 class Estoque(TimeStampedModel):
     funcionario = models.ForeignKey(User, on_delete=models.CASCADE)
     nf = models.PositiveIntegerField('Nota fiscal', null=True, blank=True)
@@ -19,6 +20,7 @@ class Estoque(TimeStampedModel):
 
     def __str__(self):
         return str(self.pk)
+
 
 class EstoqueItens(models.Model):
     estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
@@ -31,4 +33,3 @@ class EstoqueItens(models.Model):
 
     def __str__(self):
         return f'{self.pk}-{self.estoque}-{self.produto}'
-
