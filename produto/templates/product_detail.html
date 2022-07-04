@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'produto:product_list' %}">Voltar</a>
+<h1>
+    {{ object }}
+    <span class="pull-right">
+        <a href="">
+            <button type="button" class="btn btn-success">
+                <span class="fa fa-pencil"></span> Editar
+            </button>
+        </a>
+    </span>
+</h1>
+
+
+<div class="container bootstrap snippets bootdey">
+<div class="panel-body inf-content">
+    <div class="row">
+        <div class="col-md-4">
+            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://img.freepik.com/vetores-gratis/composicao-isometrica-de-entrega-logistica-de-entrega-com-caracteres-humanos-sem-rosto-de-dois-trabalhadores-do-sexo-masculino-e-ilustracao-de-rack-de-encomendas_1284-29116.jpg?t=st=1656970619~exp=1656971219~hmac=748b924edcc98f3284db33da88aab4fc9581d021ffc0c91e038513c23ebde256&w=740" data-original-title="Usuario">
+        </div>
+        <div class="col-md-6">
+            <strong>Detalhes</strong><br>
+            <div class="table-responsive">
+            <table class="table table-user-information">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span><i class="fa-solid fa-cart-shopping"></i></span>
+                                Produto
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ object.produto }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span><i class="fa-solid fa-hashtag"></i></span>
+                                NCM
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ object.ncm }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span><i class="fa-solid fa-coins"></i></span>
+                                Preço
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            R$ {{ object.preco }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong>
+                                <span><i class="fa-solid fa-box-open"></i></span>
+                                Estoque
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ object.estoque }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong>
+                                <span><i class="fa-solid fa-box-open"></i></span>
+                                Estoque mínimo
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ object.estoque_minimo }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}
