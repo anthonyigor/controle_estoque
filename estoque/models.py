@@ -16,11 +16,13 @@ class Estoque(TimeStampedModel):
     movimento = models.CharField(max_length=1, choices=MOVIMENTO)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('pk',)
 
     def __str__(self):
-        return str(self.pk)
+        return f'{self.pk} - {self.nf} - {self.created.strftime("%d/%m/%Y")}'
 
+    def nf_formated(self):
+        return str(self.nf).zfill(5)
 
 class EstoqueItens(models.Model):
     estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
