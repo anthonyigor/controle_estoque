@@ -1,9 +1,10 @@
 from .models import Produto
-from django.views.generic import TemplateView
+from .forms import ProdutoForm
+from django.views.generic import TemplateView, CreateView
 from django.shortcuts import render
 
 
-class product_list(TemplateView):
+class ProductList(TemplateView):
     template_name = 'product_list.html'
 
     def get_context_data(self, **kwargs):
@@ -17,3 +18,13 @@ def product_detail(request, pk):
     obj = Produto.objects.get(pk=pk)
     context = {'object': obj}
     return render(request, template_name, context)
+
+
+class ProductAdd(TemplateView):
+    template_name = 'produto_form.html'
+
+
+class ProductCreate(CreateView):
+    model = Produto
+    template_name = 'produto_form.html'
+    form_class = ProdutoForm

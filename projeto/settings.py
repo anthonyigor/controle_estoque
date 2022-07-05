@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #my apps
     'core',
     'produto',
     'estoque',
+    #other apps
     'fontawesomefree',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
