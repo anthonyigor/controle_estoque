@@ -25,6 +25,9 @@ def estoque_entrada_detail(request, pk):
 def estoque_entrada_add(request):
     template_name = 'estoque_entrada_form.html'
     estoque_form = Estoque()
+
+    '''cria a fábrica de forms inline
+    param: model, inline_model, form em que serão salvos os dados '''
     item_estoque_formset = inlineformset_factory(
         Estoque,
         EstoqueItens,
@@ -33,6 +36,7 @@ def estoque_entrada_add(request):
         min_num=1,
         validate_min=True,
     )
+
     if request.method == 'POST':
         form = EstoqueForm(request.POST, instance=estoque_form, prefix='main')
         formset = item_estoque_formset(request.POST, instance=estoque_form, prefix='estoque')
