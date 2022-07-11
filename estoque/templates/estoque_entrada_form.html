@@ -79,3 +79,33 @@
     </div>
 </div>
 {% endblock content %}
+
+{% block js %}
+
+<script>
+    // config botão add item
+    $(document).ready(function() {
+        $('#add-item').click(function(ev) {
+            ev.preventDefault();
+            var count = $('#estoque').children().length;
+            var tmplMarkup = $('#item-estoque').html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count)
+            $('div#estoque').append(compiledTmpl);
+
+            $('#id_estoque-TOTAL_FORMS').attr('value', count + 1);
+
+            // animação para movimento de scroll ao adicionar item
+            $('html, body').animate({
+                scrollTop: $('#add-item').position().top - 200}, 800);
+        });
+    });
+</script>
+
+<script type="text/html" id="item-estoque">
+    <div id="item-__prefix__" class="form-group" style="margin-top:10px;">
+        {{ formset.empty_form|bootstrap }}
+    </div>
+
+</script>
+
+{% endblock js %}
