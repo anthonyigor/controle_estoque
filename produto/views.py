@@ -2,6 +2,7 @@ from .models import Produto
 from .forms import ProdutoForm
 from django.views.generic import TemplateView, CreateView, UpdateView
 from django.shortcuts import render
+from django.http import JsonResponse
 
 
 class ProductList(TemplateView):
@@ -34,3 +35,9 @@ class ProductUpdate(UpdateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
+
+
+def product_json(request, pk):
+    produto = Produto.objects.filter(pk=pk)
+    data = [item.to_dict_json() for item in produto]
+    return JsonResponse({'data': data})
