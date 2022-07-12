@@ -26,9 +26,6 @@ class Estoque(TimeStampedModel):
     def nf_formated(self):
         return str(self.nf).zfill(5)
 
-    def get_absolute_url(self):
-        return reverse_lazy('estoque:estoque_entrada_detail', kwargs={'pk': self.pk})
-
 
 class EstoqueEntrada(Estoque):
 
@@ -39,6 +36,8 @@ class EstoqueEntrada(Estoque):
         verbose_name = 'estoque entrada'
         verbose_name_plural = 'estoque entrada'
 
+    def get_absolute_url(self):
+        return reverse_lazy('estoque:estoque_entrada_detail', kwargs={'pk': self.pk})
 
 class EstoqueSaida(Estoque):
 
@@ -49,6 +48,8 @@ class EstoqueSaida(Estoque):
         verbose_name = 'estoque saida'
         verbose_name_plural = 'estoque saida'
 
+    def get_absolute_url(self):
+        return reverse_lazy('estoque:estoque_saida_detail', kwargs={'pk': self.pk})
 
 class EstoqueItens(models.Model):
     estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE, related_name='estoques')
