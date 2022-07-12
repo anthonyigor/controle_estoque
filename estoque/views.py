@@ -54,6 +54,8 @@ def estoque_entrada_add(request):
         formset = item_estoque_formset(request.POST, instance=estoque_form, prefix='estoque')
         if form.is_valid() and formset.is_valid():
             form = form.save()
+            form.movimento='e'
+            form.save()
             formset.save()
             baixa_estoque(form)
             url = 'estoque:estoque_entrada_detail'
@@ -101,6 +103,8 @@ def estoque_saida_add(request):
         formset = item_estoque_formset(request.POST, instance=estoque_form, prefix='estoque')
         if form.is_valid() and formset.is_valid():
             form = form.save()
+            form.movimento = 's'
+            form.save()
             formset.save()
             baixa_estoque(form)
             url = 'estoque:estoque_saida_detail'
