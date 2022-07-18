@@ -7,11 +7,13 @@ from django.http import HttpResponseRedirect
 
 
 class EstoqueEntradaList(TemplateView):
-    template_name = 'estoque_entrada_list.html'
+    template_name = 'estoque_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_list'] = EstoqueEntrada.objects.all()
+        context['titulo'] = 'Entrada'
+        context['url_add'] = 'estoque:estoque_entrada_add'
         return context
 
 
@@ -69,11 +71,13 @@ def estoque_entrada_add(request):
 
 
 class EstoqueSaidaList(TemplateView):
-    template_name = 'estoque_saida_list.html'
+    template_name = 'estoque_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_list'] = EstoqueSaida.objects.all()
+        context['titulo'] = 'Saída'
+        context['url_add'] = 'estoque:estoque_saida_add'
         return context
 
 

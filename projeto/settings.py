@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'widget_tweaks',
     'bootstrapform',
+
 ]
 
 MIDDLEWARE = [
