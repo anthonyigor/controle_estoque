@@ -69,6 +69,7 @@ def estoque_add(request, template_name, movimento, url):
     return context
 
 
+@login_required
 def estoque_entrada_add(request):
     template_name = 'estoque_entrada_form.html'
     movimento = 'e'
@@ -90,7 +91,7 @@ class EstoqueSaidaList(TemplateView):
         return context
 
 
-
+@login_required
 def estoque_saida_add(request):
     template_name = 'estoque_saida_form.html'
     movimento = 's'
