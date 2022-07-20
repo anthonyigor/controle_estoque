@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'widget_tweaks',
     'bootstrapform',
+    'django_extensions',
 
 ]
 
@@ -126,11 +127,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR/'static')
 
 
-LOGIN_URL = '/admin/login'
+LOGIN_URL = '/admin/login/'
 LOGOUT_REDIRECT_URL = 'core:index'
 
 # Default primary key field type

@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, resolve_url
-from django.views.generic import TemplateView, DetailView
-from .models import EstoqueEntrada, EstoqueSaida, EstoqueItens, Produto, Estoque
-from .forms import EstoqueForm, EstoqueItensForm
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, resolve_url
+from django.views.generic import TemplateView, DetailView
+
+from .forms import EstoqueForm, EstoqueItensForm
+from .models import EstoqueEntrada, EstoqueSaida, EstoqueItens, Produto, Estoque
 
 
 class EstoqueEntradaList(TemplateView):
@@ -54,6 +55,7 @@ def estoque_add(request, template_name, movimento, url):
         formset = item_estoque_formset(request.POST, instance=estoque_form, prefix='estoque')
         if form.is_valid() and formset.is_valid():
             form = form.save(commit=False)
+            form.funcionario = request.user
             form.movimento = movimento
             form.save()
             formset.save()

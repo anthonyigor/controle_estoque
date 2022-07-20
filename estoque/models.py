@@ -1,9 +1,9 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 from core.models import TimeStampedModel
 from produto.models import Produto
 from .managers import EstoqueSaidaManager, EstoqueEntradaManager
-
 
 MOVIMENTO = (
     ('e', 'entrada'),
@@ -12,7 +12,7 @@ MOVIMENTO = (
 
 
 class Estoque(TimeStampedModel):
-    funcionario = models.ForeignKey(User, on_delete=models.CASCADE)
+    funcionario = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     nf = models.PositiveIntegerField('Nota fiscal', null=True, blank=True)
     movimento = models.CharField(max_length=1, choices=MOVIMENTO, blank=True)
 
