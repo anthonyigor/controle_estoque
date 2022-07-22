@@ -53,7 +53,6 @@ $(document).on('change', '.clProduto', function() {
         success: function(response) {
             estoque = response.data[0].estoque
             campo = self.attr('id').replace('produto', 'quantidade')
-
             $('#'+campo).val('')
         },
         error: function(xhr) {
