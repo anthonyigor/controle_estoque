@@ -67,6 +67,11 @@ $(document).on('change', '.clQuantidade', function() {
 
     // atribui o saldo ao campo 'saldo'
     campo = $(this).attr('id').replace('quantidade', 'saldo')
+    if (saldo < 0) {
+        alert('O saldo não pode ficar negativo.')
+        $('#'+campo).val(saldo)
+        return
+    }
 
     // desabilita o saldo
     $('#'+campo).prop("type", "hidden")
