@@ -1,17 +1,19 @@
-from .models import Produto
-from .forms import ProdutoForm
-from django.views.generic import TemplateView, CreateView, UpdateView
-from django.shortcuts import render
 from django.http import JsonResponse
+from django.shortcuts import render
+from django.views.generic import TemplateView, CreateView, UpdateView
+
+from .forms import ProdutoForm
+from .models import Produto
 
 
-class ProductList(TemplateView):
+def product_list(request):
     template_name = 'product_list.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['object_list'] = Produto.objects.all()
-        return context
+    objects = Produto.objects.all()
+    search = request.GET.get('search')
+    if search:
+        objects = objects.filter(produto__icontains=search)
+    context = {'object_list': objects}
+    return render(request, template_name, context)
 
 
 def product_detail(request, pk):
